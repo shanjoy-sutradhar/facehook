@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
 @import "tailwindcss";
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -66,4 +68,218 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+@layer components {
+  .bg-lwsGreen {
+    background-color: #00d991;
+  }
+  .text-lwsGreen {
+    background-color: #00d991;
+  }
+  .bg-deepDark {
+    background-color: #17181c;
+  }
+  .text-deepDark {
+    background-color: #17181c;
+  }
+  .bg-mediumDark {
+    background-color: #1e1f24;
+  }
+  .text-mediumDark {
+    background-color: #1e1f24;
+  }
+  .bg-lighterDark {
+    background-color: #27292f;
+  }
+  .text-lighterDark {
+    background-color: #27292f;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: theme("spacing.2"); /* Assuming gap-2 corresponds to spacing.2 */
+    border-radius: theme("borderRadius.md");
+    background-color: #27292f;
+    padding: theme("spacing.2.5") theme("spacing.5"); /* py-2.5 and px-5 */
+    font-size: theme("fontSize.sm");
+    font-weight: theme("fontWeight.medium");
+    color: theme("colors.white");
+  }
+
+  .btn-primary:hover {
+    background-color: #17181c;
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .btn-primary {
+      font-size: theme("fontSize.lg");
+    }
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: theme("borderRadius.md");
+    background-color: #1e1f24;
+    padding: theme("spacing.1.5"); /* p-1.5 */
+    font-weight: theme("fontWeight.medium");
+    color: theme("colors.white");
+  }
+
+  .icon-btn:hover {
+    background-color: #17181c;
+  }
+  .card {
+    border-radius: theme("borderRadius.md");
+    border: 1px solid #3f3f3f; /* Or use theme('colors.gray.700') if you have it defined */
+    background-color: #1e1f24;
+    padding: theme("spacing.4");
+    padding-left: theme("spacing.4");
+    padding-right: theme("spacing.4");
+    padding-top: theme("spacing.4");
+    padding-bottom: theme("spacing.4");
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .card {
+      padding: theme("spacing.5");
+      padding-left: theme("spacing.7");
+      padding-right: theme("spacing.7");
+      padding-top: theme("spacing.5");
+      padding-bottom: theme("spacing.5");
+    }
+  }
+
+  .form-control {
+    margin-bottom: theme("spacing.6");
+    display: flex;
+    flex-direction: column;
+    gap: theme("spacing.2.5");
+  }
+
+  .auth-label {
+    line-height: 138%;
+    font-size: theme("fontSize.base"); /* Adjust if needed */
+    margin-bottom: 5px;
+    color: white;
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .auth-label {
+      font-size: theme("fontSize.lg");
+    }
+  }
+
+  .auth-input {
+    width: 100%;
+    border-radius: theme("borderRadius.md");
+    border: 1px solid rgba(204, 204, 204, 0.14);
+    background-color: #27292f;
+    padding: theme("spacing.1.5");
+    outline: none;
+    color: white;
+  }
+
+  .auth-input:focus {
+    outline: none;
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .auth-input {
+      padding: theme("spacing.3");
+    }
+  }
+
+  .post-avater {
+    max-width: theme("spacing.10"); /* 2.5rem */
+    max-height: theme("spacing.10"); /* 2.5rem */
+    border-radius: 9999px; /* Full circle */
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .post-avater {
+      max-width: "58px";
+      max-height: "58px";
+    }
+  }
+
+  .action-modal-container {
+    background-color: theme("colors.white"); /* Assuming card is white */
+    position: absolute;
+    right: 100%;
+    top: theme("spacing.6");
+    min-width: "200px";
+    border-radius: theme(
+      "borderRadius.md"
+    ); /* Assuming card has rounded corners */
+    border: 1px solid theme("colors.gray.700"); /* Assuming card has a border */
+    box-shadow: theme("boxShadow.xl"); /* Assuming card has a shadow */
+    padding: theme("spacing.2");
+    display: flex;
+    flex-direction: column;
+  }
+
+  .action-modal-container > button {
+    padding: theme("spacing.2");
+    border-bottom: 1px solid theme("colors.gray.700"); /* Assuming divide-y is a border */
+    text-align: left;
+    width: 100%;
+  }
+
+  .action-menu-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: theme("spacing.2");
+    color: theme("colors.gray.100");
+    transition-property: all;
+    transition-duration: 150ms; /* Adjust as needed */
+  }
+}
+
+/* @layer components {
+.flex-center {
+  @apply flex items-center justify-center;
+}
+.btn-primary {
+  @apply flex-center gap-2 rounded-md bg-lighterDark px-5 py-2.5 text-sm font-medium text-white hover:bg-deepDark lg:text-lg;
+}
+.icon-btn {
+  @apply flex-center rounded-md bg-lighterDark  p-1.5  font-medium  text-white hover:bg-deepDark;
+}
+.card {
+  @apply rounded-md border border-[#3F3F3F] bg-mediumDark px-4 py-4 lg:px-7 lg:py-5;
+}
+.form-control {
+  @apply mb-6 space-y-2.5;
+}
+.auth-label {
+  @apply leading-[138%] lg:text-lg;
+}
+.auth-input {
+  @apply w-full rounded-md border border-[#CCCCCC]/[14%] bg-lighterDark  p-1.5 focus:outline-none lg:p-3;
+}
+
+.post-avater {
+  @apply max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px];
+} */
+
+/* Action Modal */
+/* .action-modal-container {
+  @apply card absolute right-full top-6 min-w-[200px] divide-y divide-[#3F3F3F] py-2 [&>button]:py-2;
+}
+
+.action-menu-item {
+  @apply flex w-full items-center gap-2 text-gray-100 transition-all;
+}
 } */
