@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
         <Link to="/">
           <img
-            className="max-w-[50px] rounded-full lg:max-w-[70px]"
+            className="max-w-[40px] lg:ml-5 rounded-full lg:max-w-[60px]"
             src={Logo}
           />
         </Link>

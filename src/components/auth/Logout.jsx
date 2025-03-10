@@ -1,10 +1,13 @@
 import LogoutIcon from "../../assets/icons/logout.svg";
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hoooks/useAuth";
 const Logout = () => {
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   const handleLogout = () => {
+    setAuth({});
     navigate("/login");
   };
   return (
