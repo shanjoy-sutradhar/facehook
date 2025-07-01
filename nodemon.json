@@ -1,0 +1,5 @@
+{
+  "watch": ["backend-server"],
+  "ignore": ["backend-server/database/db.json"],
+  "ext": "js,json"
+}

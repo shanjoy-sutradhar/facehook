@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hoooks/useAuth";
@@ -9,15 +10,35 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
 
-  const submitForm = (formData) => {
-    console.log(formData);
-    //Make an api call
-    //Will return tokens and logged in user information
-    const user = { ...formData };
-    setAuth({ user });
-    navigate("/");
+  const submitForm = async (formData) => {
+    try {
+      //Make an api call
+      //Will return tokens and logged in user information
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`,
+        formData
+      );
+
+      if (response.status === 200) {
+        const { token, user } = response.data;
+        if (token) {
+          const authToken = token.token;
+          const refreshToken = token.refreshToken;
+          console.log(`Login time auth token: ${authToken}`);
+          setAuth({ user, authToken, refreshToken });
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      setError("root.random", {
+        type: "random",
+        message: `User with email ${formData.email} is not valid`,
+      });
+    }
   };
   return (
     <form
@@ -55,6 +76,7 @@ const LoginForm = () => {
           autoComplete="current-password"
         />
       </Field>
+      <p>{errors?.root?.random?.message}</p>
       <Field>
         <button
           className="auth-input bg-[#00d991] font-bold text-[#17181c] transition-all hover:opacity-90"
