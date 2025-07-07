@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeIcon from "../../assets/icons/home.svg";
 import Notification from "../../assets/icons/notification.svg";
 import Logo from "../../assets/images/shanjoy-logo.png";
@@ -6,6 +6,7 @@ import { useAuth } from "../../hoooks/useAuth";
 import { useProfile } from "../../hoooks/useProfile";
 import Logout from "../auth/Logout";
 const Header = () => {
+  const navigate = useNavigate();
   const { auth } = useAuth();
   const { state } = useProfile();
 
@@ -31,7 +32,7 @@ const Header = () => {
 
           <Logout />
 
-          <button className="flex-center !ml-8 gap-3">
+          <Link className="flex-center !ml-8 gap-3" to="/me">
             <span className="text-lg font-medium text-white lg:text-xl">
               {user?.firstName} {user.lastName}
             </span>
@@ -40,7 +41,7 @@ const Header = () => {
               src={`${import.meta.env.VITE_SERVER_BASE_URL}/${user.avatar}`}
               alt=""
             />
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

@@ -29,7 +29,7 @@ const ProfilePage = () => {
         // setPosts(response?.data?.posts);
         if (response.status === 200) {
           dispatch({ type: actions.profile.DATA_FETCHED, data: response.data });
-          console.log(state.loading);
+          // console.log(state.loading);
         }
       } catch (error) {
         // setError(error);
