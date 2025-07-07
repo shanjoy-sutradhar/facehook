@@ -1,5 +1,15 @@
+import { useProfile } from "../../hoooks/useProfile";
+import PostList from "../posts/PostList";
 const MyPosts = () => {
-  return <div>My Posts</div>;
+  const { state } = useProfile();
+  const posts = state?.posts;
+
+  return (
+    <>
+      <h4 class="mt-6 text-xl lg:mt-8 lg:text-2xl">Your Posts</h4>
+      <PostList posts={posts} />
+    </>
+  );
 };
 
 export default MyPosts;
