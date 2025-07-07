@@ -514,6 +514,31 @@
       "avatar": "uploads/avatar/avatar-1708802845791-219561000.png",
       "email": "rambo@email.com",
       "bio": "I am Rambo!!!"
+    },
+    {
+      "id": "aad724e1-f7d1-415d-acb3-779987021e65",
+      "password": "$2b$08$5lEHS8f47b/AU.ugzX8xaOMNFhRO4PJIHRKEeJ46v39KdXKb47k8q",
+      "firstName": "Shanjoy",
+      "lastName": "SutraDhar",
+      "avatar": null,
+      "email": "shanjoy@gmail.com"
+    },
+    {
+      "id": "32e72097-7e6a-4eca-ab80-7b4a6ffe8693",
+      "password": "$2b$08$9k.CiWRqF5wXb9rHQrvi/.Id3Mv0IAnWDL6srXmjD69cUxm3IeW5C",
+      "firstName": "rambo",
+      "lastName": "thapa",
+      "avatar": null,
+      "email": "rambothapa@gmail.com"
+    },
+    {
+      "id": "ba1ccca4-6011-4b30-b86a-a01fe70746af",
+      "password": "$2b$08$Oxt6OY11x7Rx60fP8U37.eM9B7sn3GiUxm1eCVK83NajfS/bJ///a",
+      "firstName": "Rambo",
+      "lastName": "ThapaOne",
+      "avatar": "uploads/avatar/avatar-1751886285940-54707343.jpg",
+      "email": "ramboone@gmail.com",
+      "bio": "This is me"
     }
   ]
 }

@@ -18,7 +18,7 @@ function Bio() {
         `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${state?.user?.id}`,
         { bio }
       );
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
         dispatch({
           type: actions.profile.USER_DATA_EDITED,
@@ -39,7 +39,7 @@ function Bio() {
           </p>
         ) : (
           <textarea
-            className="p-2 leading-[188%] text-gray-600 lg:text-lg rounded-md"
+            className="p-2 leading-[188%] text-gray-600 bg-amber-50 lg:text-lg rounded-md"
             value={bio}
             rows={4}
             cols={55}

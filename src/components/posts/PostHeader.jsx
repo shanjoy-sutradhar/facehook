@@ -38,7 +38,7 @@ const PostHeader = ({ post }) => {
         </button>
         {showActions && (
           <div className="action-modal-container bg-black">
-            <button className="action-menu-item hover:text-lwsGreen">
+            <button className="action-menu-item hover:text-green-500">
               <img src={EditIcon} alt="Edit" />
               Edit
             </button>

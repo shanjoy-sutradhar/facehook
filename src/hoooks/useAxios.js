@@ -31,7 +31,7 @@ const useAxios = () => {
               { refreshToken }
             );
             const { token } = response.data;
-            console.log(`New Token:${token}`);
+            // console.log(`New Token:${token}`);
             setAuth({ ...auth, authToken: token });
             originalRequest.headers.Authorization = `Bearer ${token}`;
             return axios(originalRequest);

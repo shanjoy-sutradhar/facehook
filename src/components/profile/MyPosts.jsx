@@ -6,7 +6,7 @@ const MyPosts = () => {
 
   return (
     <>
-      <h4 class="mt-6 text-xl lg:mt-8 lg:text-2xl">Your Posts</h4>
+      <h4 className="mt-6 text-xl lg:mt-8 lg:text-2xl">Your Posts</h4>
       <PostList posts={posts} />
     </>
   );
