@@ -40,3 +40,10 @@ export const getDateDifferenceFromNow = (fromDate) => {
   }
   return message;
 };
+
+// --- Helper function for sorting posts (Latest first) ---
+export const sortPostsLatestFirst = (posts) => {
+  // Create a new array reference before sorting to ensure immutability
+  // This is important because .sort() modifies the array in place.
+  return [...posts].sort((a, b) => new Date(b.createAt) - new Date(a.createAt));
+};

@@ -1,6 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
 @import "tailwindcss";
+
+html,
+body {
+  height: 100%; /* Important for gradients to fill height */
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to bottom right,
+    #111827,
+    #1f2937
+  ); /* Tailwind's default dark mode colors often use this */
+  color: #e5e7eb; /* Default text color for dark mode */
+}
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

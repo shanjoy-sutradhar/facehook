@@ -1,4 +1,5 @@
 import { actions } from "../actions";
+import { sortPostsLatestFirst } from "../utils";
 
 const initialState = {
   user: null,
@@ -20,7 +21,7 @@ const profileReducer = (state, action) => {
         ...state,
         loading: false,
         user: action.data.user,
-        posts: action.data.posts,
+        posts: sortPostsLatestFirst(action.data.posts),
       };
     }
     case actions.profile.DATA_FETCH_ERROR: {
@@ -42,6 +43,36 @@ const profileReducer = (state, action) => {
         ...state,
         loading: false,
         user: { ...state.user, avatar: action.data.avatar },
+      };
+    }
+
+    case actions.profile.POST_CREATED: {
+      const newPosts = [action.data, ...state.posts];
+      return {
+        ...state,
+        loading: false,
+        posts: sortPostsLatestFirst(newPosts),
+      };
+    }
+    case actions.profile.POST_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        posts: state.posts.map((post) => {
+          if (post.id == action.data.id) {
+            return action.data;
+          } else {
+            return post;
+          }
+        }),
+      };
+    }
+
+    case actions.profile.POST_DELETED: {
+      return {
+        ...state,
+        loading: false,
+        posts: state.posts.filter((post) => post.id !== action.data),
       };
     }
 

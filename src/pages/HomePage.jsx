@@ -1,15 +1,18 @@
-import { useAuth } from "../hoooks/useAuth";
+// HomePage.jsx
 
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import { actions } from "../actions";
+import NewPost from "../components/posts/NewPost";
 import PostList from "../components/posts/PostList";
+import { useAuth } from "../hoooks/useAuth";
 import useAxios from "../hoooks/useAxios";
-import { postReducer } from "../reducers/PostReducer";
+import { usePost } from "../hoooks/usePost";
 const HomePage = () => {
   const { auth } = useAuth();
-  const [state, dispatch] = useReducer(postReducer);
-
+  // const [state, dispatch] = useReducer(postReducer);
+  const { state, dispatch } = usePost();
   const { api } = useAxios();
+
   useEffect(() => {
     dispatch({ type: actions.post.DATA_FETCHING });
     const fetchPost = async () => {
@@ -26,20 +29,17 @@ const HomePage = () => {
     };
     fetchPost();
   }, []);
+
   if (state?.loading) {
     return <div>We are working...</div>;
   }
   if (state?.error) {
     return <div>Error in fetching posts {state?.error?.message}</div>;
   }
+
   return (
     <div>
-      {/* <p>Home Page</p>
-      <Link to="/me">Go to Profile Page</Link> */}
-      {/* <p p className="text-center font-bold">
-        {" "}
-        {auth.user}{" "}
-      </p> */}
+      <NewPost />
       <PostList posts={state?.posts} />
     </div>
   );

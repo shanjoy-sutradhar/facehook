@@ -1,6 +1,8 @@
-import { Navigate, Outlet } from "react-router-dom";
-import Header from "../components/common/Header";
+// PrivateRoutes.jsx
+import { Navigate } from "react-router-dom";
+import MainLayout from "../components/common/MainLayout";
 import { useAuth } from "../hoooks/useAuth";
+import PostProvider from "../providers/PostProvider";
 import ProfileProvider from "../providers/ProfileProvider";
 const PrivateRoutes = () => {
   const { auth } = useAuth();
@@ -8,14 +10,11 @@ const PrivateRoutes = () => {
     <>
       {auth.authToken ? (
         <>
-          <ProfileProvider>
-            <Header />
-            <main className="mx-auto max-w-[1020px] py-8">
-              <div className="container">
-                <Outlet />
-              </div>
-            </main>
-          </ProfileProvider>
+          <PostProvider>
+            <ProfileProvider>
+              <MainLayout />
+            </ProfileProvider>
+          </PostProvider>
         </>
       ) : (
         <Navigate to="/login" />

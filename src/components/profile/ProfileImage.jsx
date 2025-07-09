@@ -19,7 +19,6 @@ function ProfileImage() {
       for (const file of fileUploadRef.current.files) {
         formData.append("avatar", file);
       }
-
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${
           state?.user?.id

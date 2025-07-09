@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { actions } from "../../actions";
-import CheckIcon from "../../assets/icons/checkGreen.webp";
+// import CheckIcon from "../../assets/icons/checkGreen.webp";
+import CheckIcon from "../../assets/icons/check-mark-circle.svg";
 import EditIcon from "../../assets/icons/edit.svg";
 import useAxios from "../../hoooks/useAxios";
 import { useProfile } from "../../hoooks/useProfile";
@@ -10,8 +11,7 @@ function Bio() {
   const [bio, setBio] = useState(state?.user?.bio);
   const [editMode, setEditMode] = useState(false);
 
-  const handleBioEdit = async (e) => {
-    e.preventDefault();
+  const handleBioEdit = async () => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     try {
       const response = await api.patch(
@@ -25,7 +25,6 @@ function Bio() {
           data: response.data,
         });
       }
-      setEditMode(false);
     } catch (err) {
       dispatch({ type: actions.profile.DATA_FETCH_ERROR, error: err.message });
     }
@@ -39,7 +38,7 @@ function Bio() {
           </p>
         ) : (
           <textarea
-            className="p-2 leading-[188%] text-gray-600 bg-amber-50 lg:text-lg rounded-md"
+            className="p-2 leading-[188%] text-gray-400 bg-lighterDark lg:text-lg rounded-md"
             value={bio}
             rows={4}
             cols={55}
